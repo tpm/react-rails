@@ -32,8 +32,12 @@ module React
       #   <%= react_component :HelloMessage do -%>
       #     Loading...
       #   <% end -%>
-      def react_component(name, args = {}, options = {}, &block)
+      def react_component(name, args = {}, options = {})
         options = {:tag => options} if options.is_a?(Symbol)
+
+        if options[:prerender]
+          block = Proc.new { React::Renderer.render(name, args) }
+        end
 
         html_options = options.reverse_merge(:data => {})
         html_options[:data].tap do |data|

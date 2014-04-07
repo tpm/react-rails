@@ -21,6 +21,12 @@ class ViewHelperTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'react_component accepts prerender option' do
+    html = React::Renderer.render('HelloWorld', { name: 'Foo' })
+    assert html.include?('data-reactid')
+    assert html.include?('data-react-checksum')
+  end
+
   test 'react_component accepts HTML options and HTML tag' do
     assert @helper.react_component('Foo', {}, :span).match(/<span\s.*><\/span>/)
 

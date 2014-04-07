@@ -41,20 +41,19 @@ module React
         # e.g. /vendor/assets/react/react.js
         dropin_path_env = app.root.join("vendor/assets/react/#{app.config.react.variant}")
         app.assets.prepend_path dropin_path_env if dropin_path_env.exist?
-        end
+      end
 
-        initializer "react_rails.add_watchable_files" do |app|
-          glob = "#{app.root}/app/assets/javascripts/**/*.jsx*"
-          files = Dir[glob]
-          app.config.watchable_files.concat(files)
-        end
+      initializer "react_rails.add_watchable_files" do |app|
+        glob = "#{app.root}/app/assets/javascripts/**/*.jsx*"
+        files = Dir[glob]
+        app.config.watchable_files.concat(files)
+      end
 
-        config.after_initialize do |app|
-          React::RendererFactory.build_and_install(app, 'Renderer')
+      config.after_initialize do |app|
+        React::RendererFactory.build_and_install(app, 'Renderer')
 
-          ActionDispatch::Reloader.to_prepare do
-            React::RendererFactory.build_and_reinstall(app, 'Renderer')
-          end
+        ActionDispatch::Reloader.to_prepare do
+          React::RendererFactory.build_and_reinstall(app, 'Renderer')
         end
       end
     end
