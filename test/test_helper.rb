@@ -3,12 +3,15 @@ ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rails/test_help"
+require "pathname"
+
+CACHE_PATH = Pathname.new File.expand_path("../dummy/tmp/cache",  __FILE__)
 
 Rails.backtrace_cleaner.remove_silencers!
 
 # Remove cached files
-Rails.root.join('tmp').tap do |tmp|
-  tmp.rmtree
+Rails.root.join('tmp/cache').tap do |tmp|
+  tmp.rmtree if tmp.exist?
   tmp.mkpath
 end
 
