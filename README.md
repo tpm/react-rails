@@ -1,4 +1,4 @@
-# react-rails [![Build Status](https://travis-ci.org/facebook/react-rails.png)](https://travis-ci.org/facebook/react-rails) [![Code Climate](https://codeclimate.com/github/facebook/react-rails.png)](https://codeclimate.com/github/facebook/react-rails)
+# react-rails [![Build Status](https://travis-ci.org/reactjs/react-rails.png)](https://travis-ci.org/reactjs/react-rails) [![Code Climate](https://codeclimate.com/github/reactjs/react-rails.png)](https://codeclimate.com/github/reactjs/react-rails)
 
 react-rails is a ruby gem which makes it easier to use [React](http://facebook.github.io/react/) and [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) in your Ruby on Rails application.
 
@@ -17,7 +17,7 @@ As with all gem dependencies, we strongly recommend adding `react-rails` to your
 ```ruby
 # Gemfile
 
-gem 'react-rails', '~> 0.4.1.0'
+gem 'react-rails', '~> 0.10.0.0'
 ```
 
 
@@ -25,7 +25,7 @@ gem 'react-rails', '~> 0.4.1.0'
 
 ### react.js
 
-In order to use React client-side in your application, you must make sure the browser requests it. One way to do that is to drop `react.js` into `app/assets/javascript/` and by default your applcation manifest will pick it up. There are downsides to this approach, so we made it even easier. Once you have `react-rails` installed, you can just add a line into your config file (see Configuring) and require react directly in your manifest:
+In order to use React client-side in your application, you must make sure the browser requests it. One way to do that is to drop `react.js` into `app/assets/javascript/` and by default your application manifest will pick it up. There are downsides to this approach, so we made it even easier. Once you have `react-rails` installed, you can just add a line into your config file (see Configuring) and require react directly in your manifest:
 
 You can `require` it in your manifest:
 
